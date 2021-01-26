@@ -9,7 +9,7 @@ export class HttpService {
   constructor(private http: HttpClient) { }
 
   fetchCurenctValue() {
-    console.log(this.http.get('https://api.exchangeratesapi.io/latest'));
+    //console.log(this.http.get('https://api.exchangeratesapi.io/latest'));
     return this.http.get('https://api.exchangeratesapi.io/latest')
   }
 }
