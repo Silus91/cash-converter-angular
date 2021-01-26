@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from '../http.service';
+
 
 @Component({
   selector: 'app-converter',
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConverterComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _http: HttpService) { }
 
   ngOnInit(): void {
+    this._http.fetchCurenctValue(); 
   }
 
 }
