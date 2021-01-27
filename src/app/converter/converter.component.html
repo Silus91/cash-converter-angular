@@ -1,18 +1,26 @@
 <div class="container">
     <h1>Cash Converter</h1>
     <div>
-        <select *ngIf="values">
-            <option *ngFor="let value of values" [value]="value[1]"><p>{{value[0]}}</p> <p>{{value[1]}}</p></option>
+        <select [(ngModel)]="selected">
+            <option *ngFor="let value of values" [value]="value[1]"><p>{{value[0]}}</p></option>
         </select>
 
-        <select *ngIf="forValues" ng-model="selectedName" ng-options="x for x in names">
-        </select>
 
-        <ul *ngIf="forValues">
-            <li *ngFor="let value of forValues"><p>{{value[0]}}</p> <p>{{value[1]}}</p></li>
-        </ul>
-        <input />
-        <input />
+
+
+        <h3>{{selected}}</h3>
+
+<h2>{{exchange}}</h2>
+
+
+
+
+        <form #exchangeForm="ngForm" (ngSubmit)="onSubmit()">
+
+            {{exchangeForm.value | json }}
+            <input ngModel name="exchange" #exchange="ngModel" id="exchange"  type="number" />
+            <button>Submit </button>
+        </form>
 
     </div>
 </div>
