@@ -9,15 +9,26 @@ import { HttpService } from '../http.service';
 })
 export class ConverterComponent implements OnInit {
 
-  cashValues: Object;
+  cashValues: any;
+  values:any;
+  forValues:any;
 
   constructor(private _http: HttpService) { }
 
+
   ngOnInit(): void {
     this._http.fetchCurenctValue().subscribe(data => {
-      this.cashValues = data
-      console.log (this.cashValues)
+      this.cashValues = data;
+      this.values = Object.entries(this.cashValues.rates);
+
+
     }); 
   }
 
+
+
+
+
+
+  
 }

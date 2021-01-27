@@ -1,11 +1,16 @@
 <div class="container">
     <h1>Cash Converter</h1>
     <div>
-        <select>
-            <option>3</option>
-            <option>2</option>
-            <option>1</option>
+        <select *ngIf="values">
+            <option *ngFor="let value of values" [value]="value[1]"><p>{{value[0]}}</p> <p>{{value[1]}}</p></option>
         </select>
+
+        <select *ngIf="forValues" ng-model="selectedName" ng-options="x for x in names">
+        </select>
+
+        <ul *ngIf="forValues">
+            <li *ngFor="let value of forValues"><p>{{value[0]}}</p> <p>{{value[1]}}</p></li>
+        </ul>
         <input />
         <input />
 
