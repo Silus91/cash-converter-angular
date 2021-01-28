@@ -15,10 +15,11 @@
 
 
 
-        <form #exchangeForm="ngForm" (ngSubmit)="onSubmit()">
+        <form #exchangeForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+            {{exchangeModel | json}}
 
             {{exchangeForm.value | json }}
-            <input ngModel name="exchange" #exchange="ngModel" id="exchange"  type="number" />
+            <input [(ngModel)]="exchangeModel" name="exchange" #exchange="ngModel" id="exchange"  type="number" />
             <button>Submit </button>
         </form>
 

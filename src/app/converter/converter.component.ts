@@ -13,7 +13,7 @@ export class ConverterComponent implements OnInit {
   values:any;
   selected:any;
   exchange:any;
-
+exchangeModel:any;
 
   constructor(private _http: HttpService) { }
 
@@ -25,7 +25,6 @@ export class ConverterComponent implements OnInit {
 
     });
     
-    console.log("exchange", this.exchange)
 
   }
 
@@ -33,11 +32,12 @@ export class ConverterComponent implements OnInit {
 
   }
 
-  custonFunction(val:any) {
+  customFunction(val:any) {
 
   }
+
   onSubmit() {
-    console.log("excha44nge", this.exchange);
+    console.log("excha44nge", this.exchangeModel);
   }
 
   

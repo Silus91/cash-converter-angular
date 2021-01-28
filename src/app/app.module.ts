@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { ConverterComponent } from './converter/converter.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { Exchange } from './exchange';
 
 @NgModule({
   declarations: [
@@ -20,4 +21,6 @@ import { FormsModule } from '@angular/forms';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  exchangeModel = new Exchange(4)
+ }
