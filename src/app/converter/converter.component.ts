@@ -11,9 +11,10 @@ export class ConverterComponent implements OnInit {
 
   cashValues: any;
   values:any;
-  selected:any;
-  exchange:any;
-exchangeModel:any;
+  selected= 0;
+  exchange?:Number;
+  exchangeModel:any;
+  sum?:Number;
 
   constructor(private _http: HttpService) { }
 
@@ -22,22 +23,25 @@ exchangeModel:any;
     this._http.fetchCurenctValue().subscribe(data => {
       this.cashValues = data;
       this.values = Object.entries(this.cashValues.rates);
-
     });
     
 
   }
 
-  onCurrencySelected(val:any) {
+  onSelect(){
+    console.log("nee");
 
   }
 
-  customFunction(val:any) {
-
+  exchangeValue(event:any) {
+    console.log(event.target.value * this.selected);
+    this.exchange = event.target.value;
+    this.sum = this.exchangeModel * this.selected;
   }
 
   onSubmit() {
-    console.log("excha44nge", this.exchangeModel);
+    this.sum =  this.selected + this.exchangeModel;
+    console.log("excha44nge", this.exchangeModel, this.sum, this.selected);
   }
 
   
