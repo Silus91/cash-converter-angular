@@ -11,4 +11,11 @@ export class HttpService {
   fetchCurenctValue() {
     return this.http.get('https://api.exchangeratesapi.io/latest');
   }
+
+  fetchCurrencyValues(customRequest:string) {
+    return this.http.get(customRequest);
+  }
+  
+
+
 }

@@ -1,16 +1,19 @@
 <div class="container">
     <h1>Cash Converter</h1>
     <div>
-        <select [(ngModel)]="selected" (ngSelect)="onSelect()">
-            <option *ngFor="let value of values" [value]="value[1]"><p>{{value[0]}}</p></option>
+        <select [(ngModel)]="currencyFrom">
+            
+            <option *ngFor="let currency of currencies" [value]="currency"><p>{{currency}}</p></option>
+        </select>
+
+        <select [(ngModel)]="currencyTo">
+            <option *ngFor="let currency of currencies" [value]="currency"><p>{{currency}}</p></option>
         </select>
 
 
+        <h3>selected{{currencyFrom}}</h3>
 
-
-        <h3>selected{{selected}}</h3>
-
-<h2>exchange{{exchangeModel}}</h2>
+<h2>exchange{{exchange}}</h2>
 
 <h1>{{sum}}</h1>
 
@@ -20,11 +23,10 @@
 
 
         <form #exchangeForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
-            {{exchangeModel | json}}
 
             {{exchangeForm.value | json }}
-            <input [(ngModel)]="exchangeModel" name="exchange" [value]="exchange" (input)="exchangeValue($event)" #exchange="ngModel"  type="number" />
-            <button>Submit </button>
+            <input  name="exchange" [value]="exchange" (input)="exchangeValue($event)" type="number" />
+            <button>Submit</button>
         </form>
 
     </div>
