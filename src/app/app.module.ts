@@ -6,11 +6,13 @@ import { ConverterComponent } from './converter/converter.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { Exchange } from './exchange';
+import { ButtonComponent } from './button/button.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ConverterComponent
+    ConverterComponent,
+    ButtonComponent
   ],
   imports: [
     BrowserModule,

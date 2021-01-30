@@ -1,6 +1,10 @@
 .container {
-  background-color: grey;
+  border: 2px solid black;
+  box-shadow: 2px 2px;
   width: 60%;
   position: relative;
   align-items: center;
+
+  &:hover {
+  }
 }

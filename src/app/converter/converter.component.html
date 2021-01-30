@@ -1,36 +1,110 @@
 <div class="container">
+  <h1 class="">Cash Converter</h1>
+
+<div class="row">
+
+    <div class="col">
+        <select  [(ngModel)]="currencyFrom" class="form-select form-select-lg mb-3" >
+            <option selected>From</option>
+            <option *ngFor="let currency of currencies" [value]="currency"><p>{{currency}}</p></option>
+      </select>
+    </div>
+    
+    <div class="col">
+        <select [(ngModel)]="currencyTo" class="form-select form-select-lg mb-3" >
+            <option disabled selected>To</option>
+            <option *ngFor="let currency of currencies" [value]="currency"><p>{{currency}}</p></option>
+        </select>
+    </div>
+
+    <div class="col">
+        <app-button 
+            text="Submit" 
+            (action)="onSubmit()">
+        </app-button>
+    </div>
+</div>
+
+
+<div *ngIf="!lastValue; else recivedLastValue" class="row"></div>
+
+<ng-template #recivedLastValue>
+
+    <div class="row">
+
+        <div class="col text-info">1 {{currencyFrom}} = {{lastValue.value}} {{currencyTo}}  </div>
+
+        <div class="mb-3">
+            <label for="exchange" class="form-label">Exchange value</label>
+            <input  name="exchange" [value]="exchange" (input)="exchangeValue($event)" type="number" class="form-control" id="exampleFormControlInput1" placeholder="{{currencyFrom}}">
+                   
+
+          </div>
+
+          <div class="mb-3">
+            <label for="exchange" class="form-label">Exchange value</label>
+            <input class="form-control" type="number" [value]="exchange * lastValue.value" placeholder="{{currencyTo}}" aria-label="readonly input example" readonly>
+                   
+
+          </div>
 
 
 
-    <h1 class="">Cash Converter</h1>
+    </div>
+
+</ng-template>
+
+
+</div>
+
+
+<!-- button validation 
+    chart with data
+    inputs
+    destructure for smaller componenets
+    naprawic otrzymanie last value zeby to byl naprawde last value a nie last value arraya obiektow
+
+
+-->
+
+
+  
+
+
+<!-- 
+    
+    
+    <form #exchangeForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+
+        {{exchangeForm.value | json }}
+        <input  name="exchange" [value]="exchange" (input)="exchangeValue($event)" type="number" />
+        <button>Submit</button>
+    </form>
+
+    
+    
+    
     <div>
-        <select [(ngModel)]="currencyFrom">
-            
-            <option *ngFor="let currency of currencies" [value]="currency"><p>{{currency}}</p></option>
-        </select>
+    <select [(ngModel)]="currencyFrom">
+        
+        <option *ngFor="let currency of currencies" [value]="currency"><p>{{currency}}</p></option>
+    </select>
 
-        <select [(ngModel)]="currencyTo">
-            <option *ngFor="let currency of currencies" [value]="currency"><p>{{currency}}</p></option>
-        </select>
+    <select [(ngModel)]="currencyTo">
+        <option *ngFor="let currency of currencies" [value]="currency"><p>{{currency}}</p></option>
+    </select>
 
 
-        <h3>selected{{currencyFrom}}</h3>
+    <h3>selected{{currencyFrom}}</h3>
 
 <h2>exchange{{exchange}}</h2>
 
 <h1>{{sum}}</h1>
 
 
- sum {{lastValue * exchange}}
+sum {{lastValue * exchange}}
 
 
 
-        <form #exchangeForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
-
-            {{exchangeForm.value | json }}
-            <input  name="exchange" [value]="exchange" (input)="exchangeValue($event)" type="number" />
-            <button>Submit</button>
-        </form>
-
-    </div>
-</div>
+    
+</div> -->
