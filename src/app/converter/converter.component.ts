@@ -32,18 +32,17 @@ export class ConverterComponent implements OnInit {
     
 
   }
-message = "huj ci do tego";
+
   exchangeValue(event:any) {
     this.exchange = event.target.value;
   }
 
   onSubmit() {
-this.customRequest = `https://api.exchangeratesapi.io/history?start_at=2021-01-20&end_at=2021-01-29&base=${this.currencyFrom}&symbols=${this.currencyTo}`  
+this.customRequest = `https://api.exchangeratesapi.io/history?start_at=2020-12-20&end_at=2021-01-29&base=${this.currencyFrom}&symbols=${this.currencyTo}`  
    this._http.fetchCurrencyValues(this.customRequest).subscribe(data => {
      this.rawFinalData = data;
-     this.finalData =  Object.entries(this.rawFinalData.rates);
+     this.finalData =  Object.entries(this.rawFinalData.rates).sort();
      this.lastValue = this.finalData[this.finalData.length -1][1];
-
 
      this.chartValues = [{data:this.finalData.map((data:any) => Object.values(data[1]))}] ;
 
