@@ -25,10 +25,10 @@
     </div>
 </div>
 
-
 <div *ngIf="!lastValue; else recivedLastValue" class="row"></div>
 
 <ng-template #recivedLastValue>
+<app-chart (datasets)="chartValues"  (legend)="chartLabels"></app-chart>
 
     <div class="row">
 

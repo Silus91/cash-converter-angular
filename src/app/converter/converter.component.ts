@@ -19,6 +19,8 @@ export class ConverterComponent implements OnInit {
   sum?:Number;
   customRequest:any
   lastValue:any;
+  public chartLabels:any;
+  public chartValues:any;
 
   constructor(private _http: HttpService) { }
 
@@ -44,9 +46,15 @@ this.customRequest = `https://api.exchangeratesapi.io/history?start_at=2021-01-2
    this._http.fetchCurrencyValues(this.customRequest).subscribe(data => {
      this.rawFinalData = data;
      this.finalData =  Object.entries(this.rawFinalData.rates);
-console.log(this.finalData.sort())
-     this.lastValue = this.finalData[this.finalData.length -1][1]
-     console.log("lastvalue", this.finalData, this.lastValue);
+     this.lastValue = this.finalData[this.finalData.length -1][1];
+
+
+     this.chartValues = [{data:this.finalData.map((data:any) => Object.values(data[1]))}] ;
+
+this.chartLabels = this.finalData.map((data:any) => data[0]);
+
+     console.log("finalData", Object.values(this.finalData[this.finalData.length]))
+
      
     for (const [key,value] of Object.entries(this.lastValue)) {
       this.lastValue.key = key;
