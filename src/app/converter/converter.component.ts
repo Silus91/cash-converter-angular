@@ -14,9 +14,11 @@ export class ConverterComponent implements OnInit {
   currencyFrom:any;
   currencyTo:any;
   exchange=0;;
-  exchangeModel:any;
+  rawFinalData:any;
+  finalData:any;
   sum?:Number;
   customRequest:any
+  lastValue:any;
 
   constructor(private _http: HttpService) { }
 
@@ -29,28 +31,32 @@ export class ConverterComponent implements OnInit {
     
 
   }
-onSelect() {
-  
-}
 
   exchangeValue(event:any) {
     console.log(this.currencyFrom);
     this.exchange = event.target.value;
-    ;
+    
 
   }
 
   onSubmit() {
-    //this.sum =  this.selected + this.exchangeModel;
-   // console.log("excha44nge", this.exchangeModel, this.sum, this.selected);
-this.customRequest = `https://api.exchangeratesapi.io/history?start_at=2021-01-01&end_at=2021-01-29&base=${this.currencyFrom}&symbols=${this.currencyTo}`  
+this.customRequest = `https://api.exchangeratesapi.io/history?start_at=2021-01-20&end_at=2021-01-29&base=${this.currencyFrom}&symbols=${this.currencyTo}`  
    this._http.fetchCurrencyValues(this.customRequest).subscribe(data => {
-     console.log("jestesmy", data)
+     this.rawFinalData = data;
+     this.finalData =  Object.entries(this.rawFinalData.rates);
+console.log(this.finalData.sort())
+     this.lastValue = this.finalData[this.finalData.length -1][1]
+     console.log("lastvalue", this.finalData, this.lastValue);
+     
+    for (const [key,value] of Object.entries(this.lastValue)) {
+      this.lastValue.key = key;
+      this.lastValue.value = value;
+    }
+
    })
   }
 
-  //funkcja ktora na event change zmienia dane w fetch api  i submit button ktory akceptuje wszystko i wysyla requesta o dane dotyczoacych 
-  //currencies itp a potem chart
+
 
 
 
