@@ -15,6 +15,8 @@ export class ChartComponent implements OnInit {
     scales: {
       yAxes: [{
           ticks: {
+            display:true,
+            beginAtZero:true
    //nie updateuje sie skala ticks do daty. stoi na 1 co 0.1
    // mozna hardcoded max tick level
           }

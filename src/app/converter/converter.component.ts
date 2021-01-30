@@ -27,6 +27,7 @@ export class ConverterComponent implements OnInit {
   ngOnInit(): void {
     this._http.fetchCurenctValue().subscribe(data => {
       this.rawCurrencyData = data;
+      
       this.currencies = Object.keys(this.rawCurrencyData.rates);
     });
     
@@ -37,9 +38,12 @@ export class ConverterComponent implements OnInit {
     this.exchange = event.target.value;
   }
 
+
+  
+
   onSubmit() {
-this.customRequest = `https://api.exchangeratesapi.io/history?start_at=2020-12-20&end_at=2021-01-29&base=${this.currencyFrom}&symbols=${this.currencyTo}`  
-   this._http.fetchCurrencyValues(this.customRequest).subscribe(data => {
+      this.customRequest = `https://api.exchangeratesapi.io/history?start_at=2020-12-20&end_at=2021-01-29&base=${this.currencyFrom}&symbols=${this.currencyTo}`  
+      this._http.fetchCurrencyValues(this.customRequest).subscribe(data => {
      this.rawFinalData = data;
      this.finalData =  Object.entries(this.rawFinalData.rates).sort();
      this.lastValue = this.finalData[this.finalData.length -1][1];
