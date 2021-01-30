@@ -13,10 +13,9 @@ export class ConverterComponent implements OnInit {
   currencies:any;
   currencyFrom:any;
   currencyTo:any;
-  exchange=0;;
+  exchange=1;
   rawFinalData:any;
   finalData:any;
-  sum?:Number;
   customRequest:any
   lastValue:any;
   public chartLabels:any;
@@ -33,12 +32,9 @@ export class ConverterComponent implements OnInit {
     
 
   }
-
+message = "huj ci do tego";
   exchangeValue(event:any) {
-    console.log(this.currencyFrom);
     this.exchange = event.target.value;
-    
-
   }
 
   onSubmit() {
@@ -53,7 +49,6 @@ this.customRequest = `https://api.exchangeratesapi.io/history?start_at=2021-01-2
 
 this.chartLabels = this.finalData.map((data:any) => data[0]);
 
-     console.log("finalData", Object.values(this.finalData[this.finalData.length]))
 
      
     for (const [key,value] of Object.entries(this.lastValue)) {

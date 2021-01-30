@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-chart',
@@ -7,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChartComponent implements OnInit {
 
+  @Input() chartValues:any;
+  @Input() chartLabels:any;
+  @Input() message:any;
 
-  public lineChartData = [
-    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
-  ];
+  // public lineChartData = [
+  //   {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
+  // ];
   public lineChartLabels= ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
   public lineChartOptions = {
     responsive: true,
@@ -24,10 +27,11 @@ export class ChartComponent implements OnInit {
   public lineChartLegend = true;
   public lineChartType:any = 'line';
 
-
-  constructor() { }
+  constructor( ) { }
 
   ngOnInit(): void {
+    console.log("chart", this.chartValues, this.chartLabels)
+
   }
 
 }
