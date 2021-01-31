@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpService } from '../http.service';
+import { ExchangeService } from '../services/exchange.service';
 import { format } from 'date-fns'
 
 
@@ -21,7 +21,7 @@ export class ConverterComponent implements OnInit {
   public chartLabels:any;
   public chartValues:any;
 
-  constructor(private http: HttpService) { }
+  constructor(private http: ExchangeService) { }
 
 
   ngOnInit(): void {

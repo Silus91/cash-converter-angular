@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LatestExchangeResponse } from 'src/app/types/exchangeRateApi';
-import { HttpService } from '../../http.service';
+import { ExchangeService } from '../../services/exchange.service';
 
 
 @Component({
@@ -15,19 +15,19 @@ export class ExchangeFormComponent implements OnInit {
   currencyTo: string = "PLN";
   amount: number = 1;
 
-  constructor(private http: HttpService) { }
+  constructor(private exchangeService: ExchangeService) { }
 
   ngOnInit(): void {
-    this.http.fetchCurenctValue().subscribe(({rates}) => {
+    this.exchangeService.fetchLatestRates().subscribe(({rates}) => {
       this.currencies = Object.keys(rates);
     })
   }
 
   onSubmit() {
-    // this.customFetchDataRequest = `https://api.exchangeratesapi.io/history?start_at=2020-12-20&end_at=2021-01-29&base=${this.currencyFrom}&symbols=${this.currencyTo}`  
-    // this.http.fetchCurrencyValues(this.customFetchDataRequest).subscribe(data => {
-    // this.rawFinalData = data;
-console.log(this.amount, this.currencyTo, this.currencyFrom)
+    this.exchangeService.fetchHistoricRates(this.currencyFrom, this.currencyTo);
+    this.exchangeService.amount = this.amount;
+  }
+}
 
 
 
@@ -47,5 +47,3 @@ console.log(this.amount, this.currencyTo, this.currencyFrom)
 
   //  })
   // }
-  }
-}

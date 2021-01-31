@@ -10,6 +10,7 @@ import { ButtonComponent } from './button/button.component';
 import { ChartComponent } from './chart/chart.component';
 import { ChartsModule } from 'ng2-charts';
 import { ExchangeFormComponent } from './components/exchange-form/exchange-form.component';
+import { ExchangeDetailComponent } from './components/exchange-detail/exchange-detail.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ExchangeFormComponent } from './components/exchange-form/exchange-form.
     ConverterComponent,
     ButtonComponent,
     ChartComponent,
-    ExchangeFormComponent
+    ExchangeFormComponent,
+    ExchangeDetailComponent
   ],
   imports: [
     BrowserModule,
