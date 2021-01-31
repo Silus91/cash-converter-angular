@@ -1,21 +1,21 @@
-<form class="d-flex bd-highlight mb-3 align-items-end">
-    <div class="flex-fill bd-highlight">
+<form class="row d-flex bd-highlight mb-3 align-items-end">
+    <div class="col-lg-3 col-sm-6  bd-highlight">
         <label for="amount" class="form-label">Amount</label>
         <input name="amount" [value]="amount" [(ngModel)]="amount" type="number" class="form-control" placeholder="Amount">
     </div>
-    <div class="flex-fill px-2 bd-highlight">
+    <div class="col-lg-3 col-sm-6 col-  px-2 bd-highlight">
         <label class="form-label" for="from">From</label>
         <select [(ngModel)]="currencyFrom" name="from" class="form-select form-select">
             <option *ngFor="let currency of currencies" [value]="currency"><p>{{currency}}</p></option>
         </select>
     </div>
-    <div class="flex-fill pe-2 bd-highlight">
+    <div class="col-lg-3 col-sm-6  pe-2 bd-highlight">
         <label class="form-label" for="to">To</label>
         <select [(ngModel)]="currencyTo" name="to" class="form-select form-select" >
             <option *ngFor="let currency of currencies" [value]="currency"><p>{{currency}}</p></option>
         </select>
     </div>
-    <div class="ms-auto bd-highlight" >
+    <div class="col-lg-3 col-sm-6 ms-auto bd-highlight" >
         <button (click)="onSubmit()" type="submit" *ngIf="amount > 0 else buttonDisabled;" class="btn btn-primary">Submit</button>
         <ng-template #buttonDisabled>
             <button (click)="onSubmit()" type="submit" class=" btn btn-primary" disabled>Submit</button>

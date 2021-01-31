@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HistoricExchangeResponse, LatestExchangeResponse, Rates } from '../types/exchangeRateApi';
-import { format,subMonths} from 'date-fns'
+import { format,subMonths } from 'date-fns'
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class ExchangeService {
-  
   private baseUrl = 'https://api.exchangeratesapi.io';
   public historicRates:  Record<string, Rates> = {};
   public baseCurrency: string|null = null;
@@ -26,7 +25,7 @@ export class ExchangeService {
   }
 
   calculate() {
-    return this.amount * Object.values(this.latestRate!)[0];
+    return (this.amount * Object.values(this.latestRate!)[0]).toFixed(8);
   }
 
   fetchHistoricRates(from: string, to: string) {
