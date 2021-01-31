@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { ConverterComponent } from './converter/converter.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { Exchange } from './exchange';
 import { ChartComponent } from './components/chart/chart.component';
 import { ChartsModule } from 'ng2-charts';
 import { ExchangeFormComponent } from './components/exchange-form/exchange-form.component';
@@ -30,5 +29,4 @@ import { ExchangeDetailComponent } from './components/exchange-detail/exchange-d
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  exchangeModel = new Exchange(4)
  }

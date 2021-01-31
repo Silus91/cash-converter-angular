@@ -15,7 +15,10 @@
             <option *ngFor="let currency of currencies" [value]="currency"><p>{{currency}}</p></option>
         </select>
     </div>
-    <div class="ms-auto bd-highlight">
-        <button (click)="onSubmit()" type="submit" class="btn btn-primary">Submit</button>
+    <div class="ms-auto bd-highlight" >
+        <button (click)="onSubmit()" type="submit" *ngIf="amount > 0 else buttonDisabled;" class="btn btn-primary">Submit</button>
+        <ng-template #buttonDisabled>
+            <button (click)="onSubmit()" type="submit" class=" btn btn-primary" disabled>Submit</button>
+        </ng-template>
     </div>
   </form>
