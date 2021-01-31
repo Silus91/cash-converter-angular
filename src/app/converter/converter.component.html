@@ -1,42 +1,38 @@
 <div class="container">
-    <div class="row card">
-        <h1 class="">Cash Converter</h1>
-        <div class="col">
-            <label class="">From</label>
-            <select  [(ngModel)]="currencyFrom" class="form-select form-select-lg mb-3">
-                <option *ngFor="let currency of currencies" [value]="currency"><p>{{currency}}</p></option>
-        </select>
-        </div>
-        <div class="col">
-            <label class="">To</label>
-            <select [(ngModel)]="currencyTo" class="form-select form-select-lg mb-3" >
-                <option *ngFor="let currency of currencies" [value]="currency"><p>{{currency}}</p></option>
-            </select>
-        </div>
-        <div class="col">
-            <app-button 
-                text="Submit" 
-                (action)="onSubmit()">
-            </app-button>
+    <div class="row">
+        <div class="col-12">
+            <h2 class="mt-2">Currency Converter</h2>
+            <form class="d-flex bd-highlight mb-3 align-items-end">
+                <div class="flex-fill bd-highlight">
+                    <label for="amount" class="form-label">Amount</label>
+                    <input  name="amount" [value]="exchange" (input)="exchangeValue($event)" type="number" class="form-control" placeholder="Amount">                </div>
+                <div class="flex-fill px-2 bd-highlight">
+                    <label class="form-label" for="from">From</label>
+                    <select  [(ngModel)]="currencyFrom" name="from" class="form-select form-select">
+                        <option *ngFor="let currency of currencies" [value]="currency"><p>{{currency}}</p></option>
+                    </select>
+                </div>
+                <div class="flex-fill pe-2 bd-highlight">
+                    <label class="form-label" for="to">To</label>
+                    <select [(ngModel)]="currencyTo" name="to" class="form-select form-select" >
+                        <option *ngFor="let currency of currencies" [value]="currency"><p>{{currency}}</p></option>
+                    </select>
+                </div>
+
+                <div class="ms-auto bd-highlight">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+              </form>
         </div>
     </div>
-    <div *ngIf="!lastValue; else recivedLastValue"></div>
-    <ng-template #recivedLastValue>
-        <div class="row">
-            <p class="text-info">1 {{currencyFrom}} = {{lastValue.value}} {{currencyTo}}  </p>
-            <div class="mb-3">
-                <label for="exchange" class="form-label">Exchange value from {{currencyFrom}}</label>
-                <input  name="exchange" [value]="exchange" (input)="exchangeValue($event)" type="number" class="form-control" id="exampleFormControlInput1" placeholder="{{currencyFrom}}">
-            </div>
-            <div class="mb-3">
-                <label for="exchange" class="form-label">Exchange value to {{currencyTo}}</label>
-                <input class="form-control" type="number" [value]="exchange * lastValue.value" placeholder="{{currencyTo}}" aria-label="readonly input example" readonly>
-            </div>
+    <div class="row">
+        <div class="col-6">
+            2
         </div>
-        <app-chart [chartValues]="chartValues"  [chartLabels]="chartLabels"></app-chart>
-    </ng-template>
-
-
+        <div class="col-6">
+            3
+        </div>
+    </div>
 </div>
 
 
@@ -46,3 +42,49 @@
 -->
     
     
+
+<!-- 
+<div class="row">
+    <h1 class="">Currency Converter</h1>
+
+    <div class="col">
+        <label for="exchange" class="form-label">Value</label>
+        <input  name="exchange" [value]="exchange" (input)="exchangeValue($event)" type="number" class="form-control" id="exampleFormControlInput1" placeholder="{{currencyFrom}}">
+    </div>
+
+
+
+    <div class="col">
+        <label class="">From</label>
+        <select  [(ngModel)]="currencyFrom" class="form-select form-select mb-3">
+            <option *ngFor="let currency of currencies" [value]="currency"><p>{{currency}}</p></option>
+    </select>
+    </div>
+    <div class="col">
+        <label class="">To</label>
+        <select [(ngModel)]="currencyTo" class="form-select form-select mb-3" >
+            <option *ngFor="let currency of currencies" [value]="currency"><p>{{currency}}</p></option>
+        </select>
+    </div>
+    <div class="col">
+        <app-button 
+            text="Submit" 
+            (action)="onSubmit()">
+        </app-button>
+    </div>
+</div>
+<div *ngIf="!lastValue; else recivedLastValue"></div>
+<ng-template #recivedLastValue>
+    <div class="row">
+        <div class="text-info">1 {{currencyFrom}} = {{lastValue.value}} {{currencyTo}}  </div>
+        <div class="mb-3">
+            <label for="exchange" class="form-label">Exchange value from {{currencyFrom}}</label>
+            <input  name="exchange" [value]="exchange" (input)="exchangeValue($event)" type="number" class="form-control" id="exampleFormControlInput1" placeholder="{{currencyFrom}}">
+        </div>
+        <div class="mb-3">
+            <label for="exchange" class="form-label">Exchange value to {{currencyTo}}</label>
+            <input class="form-control" type="number" [value]="exchange * lastValue.value" placeholder="{{currencyTo}}" aria-label="readonly input example" readonly>
+        </div>
+    </div>
+    <app-chart [chartValues]="chartValues"  [chartLabels]="chartLabels"></app-chart>
+</ng-template> -->

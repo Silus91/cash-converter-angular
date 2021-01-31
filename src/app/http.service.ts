@@ -12,10 +12,10 @@ export class HttpService {
     return this.http.get('https://api.exchangeratesapi.io/latest');
   }
 
-  fetchCurrencyValues(customRequest:string) {
-    return this.http.get(customRequest);
+  fetchCurrencyValues(customFetchDataRequest:string) {
+    return this.http.get(customFetchDataRequest);
   }
-  
+  //przerobic z tego 
 
 
 }

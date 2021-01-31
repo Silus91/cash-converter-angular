@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
+import { format } from 'date-fns'
 
 
 @Component({
@@ -16,19 +17,19 @@ export class ConverterComponent implements OnInit {
   exchange=1;
   rawFinalData:any;
   finalData:any;
-  customRequest:any
+  customFetchDataRequest:any;
   lastValue:any;
   public chartLabels:any;
   public chartValues:any;
 
-  constructor(private _http: HttpService) { }
+  constructor(private http: HttpService) { }
 
 
   ngOnInit(): void {
-    this._http.fetchCurenctValue().subscribe(data => {
+    this.http.fetchCurenctValue().subscribe(data => {
       this.rawCurrencyData = data;
-      
       this.currencies = Object.keys(this.rawCurrencyData.rates);
+console.log()
     });
     
 
@@ -37,20 +38,19 @@ export class ConverterComponent implements OnInit {
   exchangeValue(event:any) {
     this.exchange = event.target.value;
   }
-
-
-  
-
+//datefns zeby dynamic
   onSubmit() {
-      this.customRequest = `https://api.exchangeratesapi.io/history?start_at=2020-12-20&end_at=2021-01-29&base=${this.currencyFrom}&symbols=${this.currencyTo}`  
-      this._http.fetchCurrencyValues(this.customRequest).subscribe(data => {
-     this.rawFinalData = data;
-     this.finalData =  Object.entries(this.rawFinalData.rates).sort();
-     this.lastValue = this.finalData[this.finalData.length -1][1];
+    this.customFetchDataRequest = `https://api.exchangeratesapi.io/history?start_at=2020-12-20&end_at=2021-01-29&base=${this.currencyFrom}&symbols=${this.currencyTo}`  
+    this.http.fetchCurrencyValues(this.customFetchDataRequest).subscribe(data => {
+    this.rawFinalData = data;
 
-     this.chartValues = [{data:this.finalData.map((data:any) => Object.values(data[1]))}] ;
 
-this.chartLabels = this.finalData.map((data:any) => data[0]);
+    this.finalData =  Object.entries(this.rawFinalData.rates).sort();
+    this.lastValue = this.finalData[this.finalData.length -1][1];
+
+    this.chartValues = [{data:this.finalData.map((data:any) => Object.values(data[1]))}] ;
+
+    this.chartLabels = this.finalData.map((data:any) => data[0]);
 
 
      
