@@ -4,66 +4,13 @@
             <h2 class="mt-2">Currency Converter</h2>
             <app-exchange-form></app-exchange-form>
         </div>
-    </div>
-    <div class="row">
+    </div>   
+    <div *ngIf="exchangeService.latestRate;" class="row">
         <div class="col-6">
             <app-exchange-detail></app-exchange-detail>
         </div>
         <div class="col-6">
-            3
+            <app-chart ></app-chart>
         </div>
     </div>
 </div>
-
-
-<!-- 
-    h1 ma fajnie wygladac
--->
-    
-    
-
-<!-- 
-<div class="row">
-    <h1 class="">Currency Converter</h1>
-
-    <div class="col">
-        <label for="exchange" class="form-label">Value</label>
-        <input  name="exchange" [value]="exchange" (input)="exchangeValue($event)" type="number" class="form-control" id="exampleFormControlInput1" placeholder="{{currencyFrom}}">
-    </div>
-
-
-
-    <div class="col">
-        <label class="">From</label>
-        <select  [(ngModel)]="currencyFrom" class="form-select form-select mb-3">
-            <option *ngFor="let currency of currencies" [value]="currency"><p>{{currency}}</p></option>
-    </select>
-    </div>
-    <div class="col">
-        <label class="">To</label>
-        <select [(ngModel)]="currencyTo" class="form-select form-select mb-3" >
-            <option *ngFor="let currency of currencies" [value]="currency"><p>{{currency}}</p></option>
-        </select>
-    </div>
-    <div class="col">
-        <app-button 
-            text="Submit" 
-            (action)="onSubmit()">
-        </app-button>
-    </div>
-</div>
-<div *ngIf="!lastValue; else recivedLastValue"></div>
-<ng-template #recivedLastValue>
-    <div class="row">
-        <div class="text-info">1 {{currencyFrom}} = {{lastValue.value}} {{currencyTo}}  </div>
-        <div class="mb-3">
-            <label for="exchange" class="form-label">Exchange value from {{currencyFrom}}</label>
-            <input  name="exchange" [value]="exchange" (input)="exchangeValue($event)" type="number" class="form-control" id="exampleFormControlInput1" placeholder="{{currencyFrom}}">
-        </div>
-        <div class="mb-3">
-            <label for="exchange" class="form-label">Exchange value to {{currencyTo}}</label>
-            <input class="form-control" type="number" [value]="exchange * lastValue.value" placeholder="{{currencyTo}}" aria-label="readonly input example" readonly>
-        </div>
-    </div>
-    <app-chart [chartValues]="chartValues"  [chartLabels]="chartLabels"></app-chart>
-</ng-template> -->

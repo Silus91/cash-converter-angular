@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ExchangeService } from '../../services/exchange.service';
 
 @Component({
   selector: 'app-chart',
@@ -6,10 +7,8 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./chart.component.scss']
 })
 export class ChartComponent implements OnInit {
-
-  @Input() chartValues:any;
-  @Input() chartLabels:any;
-
+  public lineChartData: { data: number[] }[] = [];
+  public lineChartLabels: string[] = [];
   public lineChartOptions = {
     responsive: true,
     scales: {
@@ -17,12 +16,10 @@ export class ChartComponent implements OnInit {
           ticks: {
             display:true,
             beginAtZero:true
-   //nie updateuje sie skala ticks do daty. stoi na 1 co 0.1
-   // mozna hardcoded max tick level
           }
       }]
-  }
-    };
+    }
+  };
   public lineChartColors = [
     {
       backgroundColor: 'rgba(148,159,177,0.2)',
@@ -33,13 +30,14 @@ export class ChartComponent implements OnInit {
       pointHoverBorderColor: 'rgba(148,159,177,0.8)'
     },
   ];
-  public lineChartLegend = true;
+  public lineChartLegend = false;
   public lineChartType:any = 'line';
 
-  constructor( ) { }
+  constructor(public exchangeService: ExchangeService) { }
 
   ngOnInit(): void {
-
+    this.lineChartLabels = Object.keys(this.exchangeService.historicRates).map(rate => {
+      return rate;
+    })
   }
-
 }

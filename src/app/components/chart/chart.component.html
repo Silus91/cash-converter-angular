@@ -1,0 +1,12 @@
+<div class="canvasContainer">
+    <canvas 
+      baseChart
+      [datasets]="exchangeService.chartValues"
+      [labels]="lineChartLabels"
+      [options]="lineChartOptions"
+      [colors]="lineChartColors"
+      [legend]="lineChartLegend"
+      [chartType]="lineChartType"
+    >
+  </canvas>
+</div>

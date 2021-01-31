@@ -21,7 +21,7 @@ export class ConverterComponent implements OnInit {
   public chartLabels:any;
   public chartValues:any;
 
-  constructor(private http: ExchangeService) { }
+  constructor(public exchangeService: ExchangeService) { }
 
 
   ngOnInit(): void {
