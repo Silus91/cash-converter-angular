@@ -9,13 +9,15 @@ import { Exchange } from './exchange';
 import { ButtonComponent } from './button/button.component';
 import { ChartComponent } from './chart/chart.component';
 import { ChartsModule } from 'ng2-charts';
+import { ExchangeFormComponent } from './components/exchange-form/exchange-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ConverterComponent,
     ButtonComponent,
-    ChartComponent
+    ChartComponent,
+    ExchangeFormComponent
   ],
   imports: [
     BrowserModule,

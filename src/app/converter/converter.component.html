@@ -2,27 +2,7 @@
     <div class="row">
         <div class="col-12">
             <h2 class="mt-2">Currency Converter</h2>
-            <form class="d-flex bd-highlight mb-3 align-items-end">
-                <div class="flex-fill bd-highlight">
-                    <label for="amount" class="form-label">Amount</label>
-                    <input  name="amount" [value]="exchange" (input)="exchangeValue($event)" type="number" class="form-control" placeholder="Amount">                </div>
-                <div class="flex-fill px-2 bd-highlight">
-                    <label class="form-label" for="from">From</label>
-                    <select  [(ngModel)]="currencyFrom" name="from" class="form-select form-select">
-                        <option *ngFor="let currency of currencies" [value]="currency"><p>{{currency}}</p></option>
-                    </select>
-                </div>
-                <div class="flex-fill pe-2 bd-highlight">
-                    <label class="form-label" for="to">To</label>
-                    <select [(ngModel)]="currencyTo" name="to" class="form-select form-select" >
-                        <option *ngFor="let currency of currencies" [value]="currency"><p>{{currency}}</p></option>
-                    </select>
-                </div>
-
-                <div class="ms-auto bd-highlight">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-              </form>
+            <app-exchange-form></app-exchange-form>
         </div>
     </div>
     <div class="row">
@@ -36,8 +16,7 @@
 </div>
 
 
-<!-- button validation 
-    destructure for smaller componenets
+<!-- 
     h1 ma fajnie wygladac
 -->
     
