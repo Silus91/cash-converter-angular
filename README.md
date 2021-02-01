@@ -1,15 +1,21 @@
 # CashConverterAngular
 
-Test project Based on Angular.
+###Coding task Stock.ly
 
-Cash converter using ThirdpartyAPI
+Currency converter using { what api? }
+###Set up guide https://exchangeratesapi.io
 
-steps to follow
+1. Clone the repository
+2. run `npm install`
+3. run `ng serve -o`
 
-git clone
+### Prerequisites
 
-npm install
+- node v.\*
+- angular cli
 
-ng serve -o
+https://angular-cash-converter.herokuapp.com/
 
-Used Chart.js for generating chart with API data.
+page avaible to see live at
+
+https://angular-cash-converter.herokuapp.com/
